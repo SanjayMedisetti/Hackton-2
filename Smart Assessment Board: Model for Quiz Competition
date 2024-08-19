@@ -1,0 +1,51 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class Main {
+
+   
+    private static final Map<String, String> stateCapitalMap = new HashMap<>();
+
+    public static void main(String[] args) {
+       
+        populateStateCapitalMap();
+
+        
+        startQuiz();
+    }
+
+    private static void populateStateCapitalMap() {
+        stateCapitalMap.put("Alabama", "Montgomery");
+        stateCapitalMap.put("Alaska", "Juneau");
+        stateCapitalMap.put("Arizona", "Phoenix");
+        stateCapitalMap.put("Arkansas", "Little Rock");
+       
+    }
+
+    private static void startQuiz() {
+        Scanner scanner = new Scanner(System.in);
+        int score = 0;
+
+        System.out.println("Welcome to the State and Capital Quiz!");
+        System.out.println("You will be asked to identify the capitals of several states.");
+        System.out.println("Type your answer and press Enter. Let's begin!");
+
+        
+        for (Map.Entry<String, String> entry : stateCapitalMap.entrySet()) {
+            System.out.println("What is the capital of " + entry.getKey() + "?");
+            String userAnswer = scanner.nextLine();
+
+            
+            if (userAnswer.equalsIgnoreCase(entry.getValue())) {
+                System.out.println("Correct!");
+                score++;
+            } else {
+                System.out.println("Incorrect! The correct answer is " + entry.getValue() + ".");
+            }
+        }
+
+       
+        System.out.println("Quiz completed! Your score: " + score + " out of " + stateCapitalMap.size());
+    }
+}
